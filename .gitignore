@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+augmented_directory/
+*.zip
+distribution_charts/
+augmentation_preview.png
+venv/
