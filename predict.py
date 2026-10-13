@@ -21,7 +21,7 @@ import zipfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
- import model_utils as mu  # noqa: E402
+import model_utils as mu  # noqa: E402
 import transformation as tr  # noqa: E402
 
 
