@@ -39,12 +39,21 @@ augmentation: $(STAMP)
 balance: $(STAMP)
 	$(PY) Balance.py "$(DIR)" -dst "$(DST)"
 
+# ---------- Part 3 ----------
+transformation: $(STAMP)
+	$(PY) Transformation.py "$(IMG)"
+
+# ---------- quality ----------
+lint: $(STAMP)
+	$(PY) -m flake8 *.py
+
 # ---------- cleaning ----------
 clean:
 	find . -name "__pycache__" -type d -prune -exec rm -rf {} +
 
 fclean: clean
-	rm -rf $(VENV) $(DST) distribution_charts augmentation_preview.png
+	rm -rf $(VENV) $(DST) distribution_charts augmentation_preview.png \
+	       transformation_preview.png histogram_preview.png
 
 re: fclean all
 
@@ -53,8 +62,10 @@ help:
 	@echo "make distribution     Part 1: charts          (DIR=./images [SAVE=charts])"
 	@echo "make augmentation     Part 2: 1 image, 6 augs (IMG=\"path/to/image (1).JPG\")"
 	@echo "make balance          Part 2: balance dataset (DIR=./images DST=augmented_directory)"
+	@echo "make transformation   Part 3: feature extract (IMG=\"path/to/image (1).JPG\")"
+	@echo "make lint             style check with flake8"
 	@echo "make clean            remove __pycache__"
 	@echo "make fclean           clean + remove venv and augmented_directory"
 	@echo "make re               fclean + install again"
 
-.PHONY: all distribution augmentation balance test lint clean fclean re help
+.PHONY: all distribution augmentation balance transformation lint clean fclean re help

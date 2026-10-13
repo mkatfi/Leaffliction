@@ -4,4 +4,6 @@ augmented_directory/
 *.zip
 distribution_charts/
 augmentation_preview.png
+transformation_preview.png
+histogram_preview.png
 venv/
